@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gift Cards — Amour Jewels</title>
+<meta name="description" content="Amour Jewels digital gift cards — from ₹1,000. Delivered instantly, redeemable on everything.">
+<link rel="canonical" href="https://amourjewels.in/gift-card.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%2316243E'/%3E%3Ctext x='32' y='44' font-family='Georgia' font-size='36' fill='%23FFFFFF' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/theme-belle.css">
+<style>
+.gc-card{background:var(--espresso);color:var(--champagne);border-radius:26px;padding:46px 44px;position:relative;overflow:hidden;max-width:560px;margin:0 auto}
+.gc-card::after{content:'';position:absolute;inset:14px;border:1px solid rgba(255,255,255,.3);border-radius:18px;pointer-events:none}
+.gc-card .kicker.on-dark{margin-bottom:26px}
+.gc-card h2{color:#fff;font-size:30px;margin-bottom:10px}
+.gc-card p{color:rgba(255,255,255,.75);max-width:40ch;margin-bottom:28px}
+.gc-amts{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px}
+.gc-amts button{border:1px solid rgba(255,255,255,.35);color:#fff;padding:14px 20px;font:500 13px/1 var(--sans);letter-spacing:.08em;transition:all .3s}
+.gc-amts button.active,.gc-amts button:hover{background:var(--cream);color:var(--espresso)}
+.gc-card input{width:100%;padding:14px 16px;border:1px solid rgba(255,255,255,.3);background:transparent;color:#fff;font:inherit;margin-bottom:12px}
+.gc-card input::placeholder{color:rgba(255,255,255,.5)}
+.gc-card .btn{width:100%;margin-top:6px}
+.gc-card .btn.gold{background:var(--cream);color:var(--espresso);border-color:var(--cream)}
+</style>
+</head>
+<body style="background:var(--ivory)">
+<header class="site-header" id="siteHeader" hidden></header>
+
+<main style="min-height:100vh;display:flex;align-items:center;padding:80px 20px">
+  <div style="width:100%">
+    <div class="gc-card">
+      <span class="kicker on-dark">The Gift of Sparkle</span>
+      <h2>Amour Gift Card</h2>
+      <p>Delivered instantly to their inbox with a note from you. Redeemable on everything — no exclusions, valid 12 months.</p>
+      <div class="gc-amts" id="gcAmts">
+        <button data-amt="1000" class="active">₹1,000</button>
+        <button data-amt="2500">₹2,500</button>
+        <button data-amt="5000">₹5,000</button>
+        <button data-amt="10000">₹10,000</button>
+      </div>
+      <input id="gcTo" type="text" placeholder="Recipient's name">
+      <input id="gcEmail" type="email" placeholder="Recipient's email">
+      <input id="gcNote" type="text" placeholder="Your note (optional)">
+      <button class="btn gold" id="gcAdd">Add Gift Card to Bag</button>
+      <p style="font-size:11.5px;margin:14px 0 0;opacity:.7">E-gift cards are delivered by email within minutes. Balance redeemable via the code in the email at checkout.</p>
+    </div>
+    <p style="text-align:center;margin-top:26px"><a href="index.html" style="color:var(--taupe);text-decoration:underline;text-underline-offset:3px">← Back to Amour Jewels</a></p>
+    <p style="text-align:center;margin-top:10px"><a href="admin.html" class="admin-link" style="display:inline-flex;align-items:center;gap:6px;color:var(--taupe);opacity:.7" aria-label="Admin console"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" style="width:12px;height:12px;stroke:currentColor"><rect x="5" y="10" width="14" height="10" rx="1.5"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Admin</a></p>
+  </div>
+</main>
+
+<script src="js/store-config.js" defer></script>
+<script src="js/main.js" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  let amt = 1000;
+  document.querySelectorAll('#gcAmts button').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('#gcAmts button').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    amt = +b.dataset.amt;
+  }));
+  document.getElementById('gcAdd').addEventListener('click', () => {
+    const cart = getCart();
+    cart.push({ key: 'gc-' + amt + '-' + Date.now().toString().slice(-6), id: 'giftcard', qty: 1, size: '₹' + amt, amount: amt });
+    saveCart(cart);
+    syncBadges(); renderDrawer();
+    toast('Gift card added to bag');
+    setTimeout(() => window.location.href = 'cart.html', 700);
+  });
+});
+</script>
+</body>
+</html>
