@@ -14,7 +14,7 @@
 
 :root{
   /* — surfaces — one butter family: champagne < cream < ivory < sand < linen — */
-  --champagne:#fffbe6; --cream:#fdf5c8; --ivory:#fceca8; --sand:#f7e08d; --linen:#eed574;
+  --champagne:#fffbe6; --cream:#f4edc9; --ivory:#f6e6b0; --sand:#fcebae; --linen:#f6e7ad;
   /* translucent chrome reads from these triplets, so no literal can leak white */
   --ivory-rgb:252,236,168; --cream-rgb:253,245,200; --champagne-rgb:255,251,230;
   /* — ink — */
