@@ -18,7 +18,7 @@
   /* translucent chrome reads from these triplets, so no literal can leak white */
   --ivory-rgb:252,236,168; --cream-rgb:253,245,200; --champagne-rgb:255,251,230;
   /* — ink — */
-  --espresso:#1a1712; --espresso-2:#12100c; --cocoa:#3f382d; --taupe:#6c6455;
+  --espresso:#91B1C9; --espresso-2:#12100c; --cocoa:#3f382d; --taupe:#6c6455;
   --stone:#74685c;
   /* — accents — */
   --gold:#ad7d22; --gold-deep:#7d590f; --gold-soft:#e8c877;
