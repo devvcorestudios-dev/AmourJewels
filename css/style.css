@@ -18,7 +18,7 @@
   /* translucent chrome reads from these triplets, so no literal can leak white */
   --ivory-rgb:252,236,168; --cream-rgb:253,245,200; --champagne-rgb:255,251,230;
   /* — ink — */
-  --espresso:#91B1C9; --espresso-2:#12100c; --cocoa:#3f382d; --taupe:#6c6455;
+  --lavendar:#91B1C9; --espresso-2:#12100c; --cocoa:#3f382d; --taupe:#6c6455;
   --stone:#74685c;
   /* — accents — */
   --gold:#ad7d22; --gold-deep:#7d590f; --gold-soft:#e8c877;
@@ -154,7 +154,7 @@ h1 em,h2 em,h3 em,h4 em{font-style:italic;font-weight:400}
 .header-actions{display:flex;justify-content:flex-end;align-items:center;gap:6px}
 .icon-btn{
   width:40px;height:40px;display:inline-flex;align-items:center;justify-content:center;
-  color:var(--espresso);position:relative;transition:color .3s;border-radius:50%;
+  color:var(--lavendar);position:relative;transition:color .3s;border-radius:50%;
 }
 .icon-btn:hover{color:var(--gold-deep)}
 .icon-btn svg{width:19px;height:19px;stroke:currentColor}
