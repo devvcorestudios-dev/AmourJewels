@@ -14,11 +14,11 @@
 
 :root{
   /* — surfaces — one butter family: champagne < cream < ivory < sand < linen — */
-  --champagne:#fffbe6; --cream:#f4edc9; --ivory:#f6e6b0; --sand:#fcebae; --linen:#f6e7ad;
+  --champagne:#fffbe6; --cream:#f4edc9; --ivory:#f6e6b0; --sand:#fcebae; --linen:#eed574;
   /* translucent chrome reads from these triplets, so no literal can leak white */
   --ivory-rgb:252,236,168; --cream-rgb:253,245,200; --champagne-rgb:255,251,230;
   /* — ink — */
-  --lavendar:#91B1C9; --espresso-2:#12100c; --cocoa:#3f382d; --taupe:#6c6455;
+  --espresso:#1a1712; --espresso-2:#12100c; --cocoa:#3f382d; --taupe:#6c6455;
   --stone:#74685c;
   /* — accents — */
   --gold:#ad7d22; --gold-deep:#7d590f; --gold-soft:#e8c877;
@@ -38,6 +38,7 @@
   --r-pill:99px;    /* genuine pills only: badges, dots, avatars */
   --ease:cubic-bezier(.22,.61,.36,1);
   --container:1320px;
+  --lavendar:#91B1C9;
 }
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -148,13 +149,13 @@ h1 em,h2 em,h3 em,h4 em{font-style:italic;font-weight:400}
 .logo{display:flex;flex-direction:column;align-items:center;gap:3px;padding:0 40px}
 .logo .word{
   font-family:var(--serif);font-weight:600;font-size:30px;letter-spacing:.34em;
-  color:var(--espresso);margin-right:-.34em;line-height:1;
+  color:var(--lavendar);margin-right:-.34em;line-height:1;
 }
 .logo .sub{font:500 8.5px/1 var(--sans);letter-spacing:.62em;text-transform:uppercase;color:var(--gold);margin-right:-.62em}
 .header-actions{display:flex;justify-content:flex-end;align-items:center;gap:6px}
 .icon-btn{
   width:40px;height:40px;display:inline-flex;align-items:center;justify-content:center;
-  color:var(--lavendar);position:relative;transition:color .3s;border-radius:50%;
+  color:var(--espresso);position:relative;transition:color .3s;border-radius:50%;
 }
 .icon-btn:hover{color:var(--gold-deep)}
 .icon-btn svg{width:19px;height:19px;stroke:currentColor}
