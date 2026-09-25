@@ -4,26 +4,26 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Checkout — Amour Jewels</title>
-<meta name="description" content="Secure checkout — insured shipping across India, COD available, 7-day exchanges.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%2316243E'/%3E%3Ctext x='32' y='44' font-family='Georgia' font-size='36' fill='%23FFFFFF' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
+<meta name="description" content="Secure checkout — insured shipping across India, 7-day exchanges.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%231A1712'/%3E%3Ctext x='32' y='44' font-family='Fraunces,Georgia,serif' font-size='34' fill='%23FFFFFF' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/theme-belle.css">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Karla:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css?v=20260925">
+<link rel="stylesheet" href="css/theme-atelier.css?v=20260923">
 </head>
 <body>
 
 <header class="site-header" id="siteHeader">
   <div class="announce" aria-hidden="true">
     <div class="announce-track">
-      <span>Complimentary insured shipping on orders above ₹2,500</span>
-      <span>Handcrafted in 92.5 silver &amp; 18k gold vermeil — Jaipur</span>
-      <span>COD available up to ₹5,000 · Easy 7-day exchange</span>
+      <span>Complimentary insured shipping on orders above <span data-store-money="freeShip">₹2,500</span></span>
+      <span>Handcrafted in 92.5 silver &amp; 18k gold vermeil — Amour Atelier</span>
+      <span>Easy 7-day exchange · Secure prepaid checkout</span>
       <span><em>Festive Edit ’26</em> — now live</span>
-      <span>Complimentary insured shipping on orders above ₹2,500</span>
-      <span>Handcrafted in 92.5 silver &amp; 18k gold vermeil — Jaipur</span>
-      <span>COD available up to ₹5,000 · Easy 7-day exchange</span>
+      <span>Complimentary insured shipping on orders above <span data-store-money="freeShip">₹2,500</span></span>
+      <span>Handcrafted in 92.5 silver &amp; 18k gold vermeil — Amour Atelier</span>
+      <span>Easy 7-day exchange · Secure prepaid checkout</span>
       <span><em>Festive Edit ’26</em> — now live</span>
     </div>
   </div>
@@ -41,7 +41,7 @@
     </nav>
     <a class="logo" href="index.html" aria-label="Amour Jewels — home">
       <span class="word">AMOUR</span>
-      <span class="sub">Jewels · Jaipur</span>
+      <span class="sub">Jewels · India</span>
     </a>
     <div class="header-actions">
       <button class="icon-btn" id="searchToggle" aria-label="Search">
@@ -116,7 +116,7 @@
   <div class="cd-items" id="cdItems"></div>
   <div class="cd-foot" id="cdFoot">
     <div class="cd-sub"><span>Subtotal</span><b id="cdSubtotal">₹0</b></div>
-    <p class="cd-note">Shipping &amp; taxes calculated at checkout · COD available</p>
+    <p class="cd-note">Shipping &amp; taxes calculated at checkout</p>
     <a class="btn wide" href="cart.html">View Bag &amp; Checkout</a>
     <button class="cd-continue" id="cdContinue">Continue shopping</button>
   </div>
@@ -127,7 +127,7 @@
     <div class="container">
       <p class="crumbs"><a href="index.html">Home</a> &nbsp;/&nbsp; <a href="cart.html">Your Bag</a> &nbsp;/&nbsp; <span>Checkout</span></p>
       <h1>Secure Checkout</h1>
-      <p class="lede">Insured shipping across India · COD available · 7-day exchange.</p>
+      <p class="lede">Insured shipping across India · Secure prepaid checkout · 7-day exchange.</p>
     </div>
   </div>
 
@@ -185,7 +185,7 @@
               </div>
               <div class="field full">
                 <label for="cxState">State</label>
-                <input id="cxState" name="state" type="text" autocomplete="address-level1" value="Rajasthan" required>
+                <input id="cxState" name="state" type="text" autocomplete="address-level1" placeholder="Your state" required>
                 <p class="err">Please enter your state.</p>
               </div>
               <div class="field full">
@@ -212,7 +212,7 @@
             <p class="opt-label" style="margin:0 0 10px;font-weight:500">Delivery speed</p>
             <label class="pay-opt">
               <input type="radio" name="shipMethod" value="std" checked>
-              <b>Standard — insured &amp; tracked</b><span id="cxStdRate">3–6 days · FREE above ₹2,500</span>
+              <b>Standard — insured &amp; tracked</b><span id="cxStdRate">3–6 days · FREE above <span data-store-money="freeShip">₹2,500</span></span>
             </label>
             <label class="pay-opt">
               <input type="radio" name="shipMethod" value="express">
@@ -237,10 +237,6 @@
               <input type="radio" name="payMethod" value="NetBanking">
               <b>NetBanking</b><span>All major banks</span>
             </label>
-            <label class="pay-opt">
-              <input type="radio" name="payMethod" value="COD">
-              <b>Cash on Delivery</b><span>Pay when it reaches you</span>
-            </label>
             <div class="checkout-actions">
               <button class="btn gold" type="submit" id="cxPayNow">Pay Securely</button>
               <button class="link-back" type="button" id="cxBackToAddress">← Change address</button>
@@ -259,7 +255,7 @@
             <path d="M40 62l14 14 26-30"/>
           </svg>
           <h2>Order Placed!</h2>
-          <p>Thank you, <span id="cxSuccessName">friend</span> — your jewellery is being hand-finished and packed at our Jaipur atelier.</p>
+          <p>Thank you, <span id="cxSuccessName">friend</span> — your jewellery is being hand-finished and packed at the Amour atelier.</p>
           <p class="order-id" id="cxOrderId"></p>
           <div class="checkout-actions" style="justify-content:center">
             <a class="btn" href="shop.html">Continue Shopping</a>
@@ -296,8 +292,8 @@
     <div class="container fm-grid">
       <div class="fm-brand">
         <div class="f-logo">AMOUR</div>
-        <div class="f-sub">Jewels · Jaipur</div>
-        <p>Handcrafted demi-fine jewellery — 92.5 silver, brass and 18k gold vermeil, set with moissanite polki and freshwater pearls. Made in Jaipur, worn everywhere.</p>
+        <div class="f-sub">Jewels · India</div>
+        <p>Handcrafted demi-fine jewellery — 92.5 silver, brass and 18k gold vermeil, set with moissanite polki and freshwater pearls. Made by Amour, worn everywhere.</p>
       </div>
       <div>
         <h4>Shop</h4>
@@ -324,7 +320,7 @@
       </div>
       <div class="fm-visit">
         <h4>Visit the Atelier</h4>
-        <p><b>Amour Jewels Studio</b><br>2nd Floor, Gopalbari Lane,<br>Johari Bazaar, Jaipur 302003</p>
+        <p><b>Amour Jewels Studio</b><br>India<br>Studio visits by appointment</p>
         <p><b>Mon–Sat</b> · 11 am – 8 pm IST</p>
         <p><a href="mailto:care@amourjewels.in">care@amourjewels.in</a><br><a href="tel:+919000040000">+91 90000 40000</a></p>
       </div>
@@ -332,8 +328,8 @@
   </div>
   <div class="footer-bottom">
     <div class="container fb-inner">
-      <p>© 2026 Amour Jewels · Handcrafted in Jaipur, India</p>
-      <div class="pay-chips"><span>UPI</span><span>Visa</span><span>Mastercard</span><span>RuPay</span><span>NetBanking</span><span>COD</span></div>
+      <p>© 2026 Amour Jewels · Handcrafted in India</p>
+      <div class="pay-chips"><span>UPI</span><span>Visa</span><span>Mastercard</span><span>RuPay</span><span>NetBanking</span></div>
       <div class="fb-links">
         <a href="policies.html#privacy">Privacy</a>
         <a href="policies.html#terms">Terms</a>
@@ -344,9 +340,9 @@
   </div>
 </footer>
 
-<script src="js/products.js" defer></script>
-<script src="js/store-config.js" defer></script>
-<script src="js/main.js" defer></script>
-<script src="js/checkout.js" defer></script>
+<script src="js/products.js?v=20260923" defer></script>
+<script src="js/store-config.js?v=20260923" defer></script>
+<script src="js/main.js?v=20260923" defer></script>
+<script src="js/checkout.js?v=20260923" defer></script>
 </body>
 </html>

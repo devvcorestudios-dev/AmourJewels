@@ -15,7 +15,7 @@ const CONTENT_KEY = 'amour_content_v1';   /* categories · reviews · blog · ba
 
 /* ---------- seeds: catalogue taxonomy ---------- */
 const DEMO_CATEGORIES = [
-  { id: 'necklaces', name: 'Necklaces',         parent: '—', order: 1, status: 'Live',  h1: 'Necklaces',  meta: 'Chokers, layered chains and pendant necklaces handcrafted in Jaipur.' },
+  { id: 'necklaces', name: 'Necklaces',         parent: '—', order: 1, status: 'Live',  h1: 'Necklaces',  meta: 'Chokers, layered chains and pendant necklaces handcrafted in India.' },
   { id: 'earrings',  name: 'Earrings',          parent: '—', order: 2, status: 'Live',  h1: 'Earrings',   meta: 'Statement chandbali, everyday studs and jhumkas in gold vermeil.' },
   { id: 'rings',     name: 'Rings',             parent: '—', order: 3, status: 'Live',  h1: 'Rings',      meta: 'Solitaire-look, halo and stacking rings in 92.5 silver.' },
   { id: 'bracelets', name: 'Kadas & Bracelets', parent: '—', order: 4, status: 'Live',  h1: 'Kadas & Bracelets', meta: 'Wide kadas, tennis bracelets and charm bangles.' },
@@ -51,7 +51,7 @@ const DEMO_REVIEWS = [
 const DEMO_BLOG = [
   { title: 'Six Functions. One Trunk.',         status: 'Published', date: '2026-08-12', views: 4210, author: 'Meera Kothari', cat: 'Styling', read: '6 min', slug: 'six-functions-one-trunk' },
   { title: 'How to Care for Your Polki',        status: 'Published', date: '2026-07-28', views: 3120, author: 'Amour Atelier',  cat: 'Care',    read: '4 min', slug: 'how-to-care-for-your-polki' },
-  { title: 'The Jaipur Karigar Series — Ep. 2', status: 'Draft',     date: '—',          views: 0,    author: 'Studio Team',    cat: 'Craft',   read: '8 min', slug: 'jaipur-karigar-series-2' },
+  { title: 'The Karigar Series — Ep. 2', status: 'Draft',     date: '—',          views: 0,    author: 'Studio Team',    cat: 'Craft',   read: '8 min', slug: 'karigar-series-2' },
   { title: 'Bridal Jewellery Checklist 2026',   status: 'Published', date: '2026-06-30', views: 5890, author: 'Meera Kothari', cat: 'Bridal',  read: '9 min', slug: 'bridal-jewellery-checklist-2026' },
   { title: 'Pearls After 40 — A Styling Guide', status: 'Scheduled', date: '2026-09-24', views: 0,    author: 'Amour Atelier',  cat: 'Styling', read: '5 min', slug: 'pearls-after-40' },
   { title: 'Why Vermeil Beats Plating',         status: 'Published', date: '2026-05-18', views: 2740, author: 'Studio Team',    cat: 'Craft',   read: '7 min', slug: 'why-vermeil-beats-plating' }
@@ -59,7 +59,7 @@ const DEMO_BLOG = [
 
 /* ---------- seeds: SEO metadata per page ---------- */
 const DEMO_SEO = [
-  { page: 'Homepage',        title: 'Amour Jewels — Handcrafted Polki, Pearls & Everyday Gold | Jaipur', slug: '/',                   h1: 'Heirloom jewellery, made for every day', indexed: true,  canonical: 'https://amourjewels.in/' },
+  { page: 'Homepage',        title: 'Amour Jewels — Handcrafted Polki, Pearls & Everyday Gold', slug: '/',                   h1: 'Heirloom jewellery, made for every day', indexed: true,  canonical: 'https://amourjewels.in/' },
   { page: 'Shop All',        title: 'Shop All Jewellery — Amour Jewels',                                 slug: '/shop',               h1: 'Shop All',                              indexed: true,  canonical: 'https://amourjewels.in/shop' },
   { page: 'The Bridal Edit', title: 'Bridal Jewellery — The Bridal Edit | Amour Jewels',                 slug: '/collections/bridal', h1: 'The Bridal Edit',                       indexed: true,  canonical: 'https://amourjewels.in/collections/bridal' },
   { page: 'Gift Cards',      title: 'Gift Cards — Amour Jewels',                                         slug: '/gift-card',          h1: 'Amour Gift Card',                       indexed: true,  canonical: 'https://amourjewels.in/gift-card' },
@@ -70,7 +70,7 @@ const DEMO_SEO = [
 
 /* ---------- seeds: homepage sections ---------- */
 const DEMO_HOME_SECTIONS = [
-  { name: 'Announcement bar',       on: true,  note: '4 rotating messages · shipping, craft, COD, festive edit' },
+  { name: 'Announcement bar',       on: true,  note: '4 rotating messages · shipping, craft, exchange, festive edit' },
   { name: 'Hero slider',            on: true,  note: '3 slides · 6s autoplay · caption + tag overlay' },
   { name: 'Category tiles',         on: true,  note: '6 tiles mapped to live categories' },
   { name: 'New arrivals rail',      on: true,  note: 'Auto-fills from collection = new (4 items)' },
@@ -110,7 +110,7 @@ const DEMO_MESSAGES = [
   { name: 'Ishita B.', channel: 'Instagram', text: 'Is the pearl strand real or shell pearl?',        ago: '1 day ago',  state: 'Open' },
   { name: 'Meher D.',  channel: 'Email',     text: 'Invoice needed with my company GSTIN please.',    ago: '2 days ago', state: 'Closed' },
   { name: 'Sana I.',   channel: 'WhatsApp',  text: 'Exchange request raised for the kada, size M.',   ago: '2 days ago', state: 'Replied' },
-  { name: 'Diya P.',   channel: 'Email',     text: 'Do you offer bridal appointments in Jaipur?',     ago: '3 days ago', state: 'Open' },
+  { name: 'Diya P.',   channel: 'Email',     text: 'Do you offer private bridal appointments?',     ago: '3 days ago', state: 'Open' },
   { name: 'Naina R.',  channel: 'WhatsApp',  text: 'Loved the packaging! Do you sell the pouches?',   ago: '4 days ago', state: 'Closed' }
 ];
 
@@ -123,7 +123,7 @@ const DEMO_ABANDONED = [
 ];
 
 const DEMO_CUSTOMERS = [
-  { name: 'Ananya Sharma', email: 'ananya@example.in', phone: '98•••1123', city: 'Jaipur',    state: 'Rajasthan',   orders: 4, spent: 38900, first: '2025-11-02', last: '2026-08-21', channel: 'Instagram', wa: true },
+  { name: 'Ananya Sharma', email: 'ananya@example.in', phone: '98•••1123', city: 'Delhi',     state: 'Delhi',   orders: 4, spent: 38900, first: '2025-11-02', last: '2026-08-21', channel: 'Instagram', wa: true },
   { name: 'Rhea Kapoor',   email: 'rhea@example.in',   phone: '97•••8842', city: 'Mumbai',    state: 'Maharashtra', orders: 3, spent: 22400, first: '2025-12-18', last: '2026-09-02', channel: 'Google',    wa: true },
   { name: 'Meher Deol',    email: 'meher@example.in',  phone: '96•••3310', city: 'Ludhiana',  state: 'Punjab',      orders: 2, spent: 17850, first: '2026-01-08', last: '2026-07-14', channel: 'WhatsApp',  wa: true },
   { name: 'Sana Iyer',     email: 'sana@example.in',   phone: '95•••7702', city: 'Bengaluru', state: 'Karnataka',   orders: 1, spent: 4850,  first: '2026-02-14', last: '2026-02-14', channel: 'Direct',    wa: false },
@@ -230,13 +230,13 @@ function metrics() {
   const baseOrders = DEMO_CUSTOMERS.reduce((a, c) => a + c.orders, 0);
   const revenue = baseRev + live;
   const orderCount = baseOrders + orders.length;
-  const codTotal = Math.round(orderCount * 0.42) + orders.filter(o => o.method === 'COD').length;
+  const prepaidPct = 100;
   const returning = DEMO_CUSTOMERS.filter(c => c.orders > 1).length;
   const unitRows = catalog.map(p => ({ p, sold: Math.max(3, Math.round(p.reviews / 18)) }));
   unitRows.sort((a, b) => b.sold - a.sold);
   return {
     orders, catalog, revenue, orderCount, live,
-    aov: revenue / orderCount, codPct: Math.min(96, pct(codTotal, orderCount)), returning,
+    aov: revenue / orderCount, prepaidPct, returning,
     units: unitRows,
     best: unitRows.slice(0, 5).map(u => ({ name: u.p.name, sold: u.sold, rev: u.sold * u.p.price })),
     slow: unitRows.slice(-3).reverse().map(u => ({ name: u.p.name, sold: u.sold, stock: u.p.stock || ((u.p.id.length % 26) + 4) }))
@@ -254,7 +254,7 @@ function dashSales(m) {
     ${kpi('AOV', money(m.aov), '▲ 4.2%')}
     ${kpi('Conversion rate', '2.8%', '▲ 0.3pp')}
     ${kpi('Refunds', '1.1%', '▼ 0.2pp (good)', true)}
-    ${kpi('COD share', m.codPct + '%', 'prepaid ' + (100 - m.codPct) + '%')}
+    ${kpi('Prepaid share', m.prepaidPct + '%', 'UPI · Cards · NetBanking')}
   </div>
   <div class="adm-cards">
     <div class="adm-card">
@@ -263,10 +263,10 @@ function dashSales(m) {
       <p class="adm-note">Baseline demo curve plus ${money(m.live)} of live orders placed on this device.</p>
     </div>
     <div class="adm-card">
-      <h3>COD vs prepaid</h3>
-      <div class="donut" style="background:conic-gradient(var(--espresso) 0 ${m.codPct * 3.6}deg, var(--linen) ${m.codPct * 3.6}deg 360deg)"><b>${m.codPct}%</b></div>
-      <div class="legend"><span><i style="background:var(--espresso)"></i>COD ${m.codPct}%</span><span><i style="background:var(--linen)"></i>Prepaid ${100 - m.codPct}%</span></div>
-      <p class="adm-note">COD capped at ${money(STORE.ship.codLimit)} per order and blocked on high-RTO pincodes.</p>
+      <h3>Prepaid payments</h3>
+      <div class="donut" style="background:conic-gradient(var(--espresso) 0 360deg, var(--linen) 360deg 360deg)"><b>100%</b></div>
+      <div class="legend"><span><i style="background:var(--espresso)"></i>Prepaid 100%</span></div>
+      <p class="adm-note">All orders are prepaid — UPI, cards or net-banking.</p>
     </div>
   </div>
   <div class="adm-grid-2">
@@ -662,14 +662,12 @@ function renderOrders(el) {
   const list = orders.filter(o => (f === 'All' || o.status === f) &&
     (!q || o.id.toLowerCase().includes(q) || ((o.customer && o.customer.name) || '').toLowerCase().includes(q)));
   const countBy = s => orders.filter(o => o.status === s).length;
-  const codDue = orders.filter(o => o.method === 'COD' && o.status !== 'Delivered').reduce((a, o) => a + (o.sub || 0), 0);
   el.innerHTML = `
   <div class="kpis" style="grid-template-columns:repeat(auto-fit,minmax(160px,1fr))">
     ${kpi('Orders', orders.length, 'live on this device')}
     ${kpi('Awaiting packing', countBy('Placed'), 'SLA 24 hrs', countBy('Placed') > 0)}
     ${kpi('In transit', countBy('Shipped') + countBy('In Transit') + countBy('Out for Delivery'), 'courier tracking live')}
     ${kpi('Delivered', countBy('Delivered'), 'review request scheduled')}
-    ${kpi('COD to collect', moneyK(codDue), 'remitted on delivery')}
   </div>
   <div class="adm-alert"><span>💬</span><div><b>Order journey is automated.</b> Advancing a stage sends the matching WhatsApp + e-mail template, writes the tracking link and appends the event to the customer timeline. Stage toggles live in WhatsApp.</div></div>
   <div class="adm-toolbar">
@@ -722,7 +720,7 @@ function renderOrders(el) {
   el.querySelectorAll('[data-view]').forEach(b => b.addEventListener('click', () => orderModal(orders[+b.dataset.view], el)));
 }
 function orderModal(o, el) {
-  const gst = gstSplit(o.sub || 0, STORE.gst.rate, (o.customer && o.customer.state) || 'Rajasthan');
+  const gst = gstSplit(o.sub || 0, STORE.gst.rate, (o.customer && o.customer.state) || STORE.sellerState);
   const stageIdx = ADM_STAGES.indexOf(o.status);
   const timeline = ADM_STAGES.map((s, i) => `<div style="display:flex;gap:12px;padding:8px 0;border-bottom:1px solid var(--line-soft)">
       <span style="min-width:120px">${s}</span>
@@ -988,7 +986,7 @@ function renderReturns(el) {
     ${kpi('RTO / cancelled', rto.length, 'courier or customer')}
     ${kpi('Return rate', pct(reqs.length, orders.length || 1) + '%', 'industry avg 8–12%')}
   </div>
-  <div class="adm-alert"><span>↩️</span><div><b>Policy:</b> 7-day exchange or return from delivery · jewellery must be unworn with the tag · refunds to source in 3–5 working days · COD orders refunded by NEFT/UPI.</div></div>
+  <div class="adm-alert"><span>↩️</span><div><b>Policy:</b> 7-day exchange or return from delivery · jewellery must be unworn with the tag · refunds to source in 3–5 working days.</div></div>
   ${pending.length ? `<div class="adm-card" style="margin-bottom:14px"><h3>Needs a decision</h3>
     ${tbl(['Order', 'Customer', 'Type', 'Reason', 'Value', 'Raised', 'Actions'], pending.map(r => {
       const i = reqs.indexOf(r);
@@ -1010,7 +1008,6 @@ function renderReturns(el) {
       <table class="adm-kv" style="margin-top:12px"><tbody>
         <tr><td>Failed attempts before RTO</td><td>7</td></tr>
         <tr><td>Prepaid RTO refund</td><td>Auto · 48 hrs</td></tr>
-        <tr><td>COD RTO</td><td>No charge to customer</td></tr>
       </tbody></table>
     </div>
   </div>`;
@@ -1372,9 +1369,9 @@ function renderMarketing(el) {
    WHATSAPP — order journey, templates, broadcasts
    ============================================================ */
 const WA_TEMPLATES = {
-  order_confirmed:  'Hi {{name}}, thank you for your Amour Jewels order {{order}}. We received {{amount}} and your pieces are being prepared in Jaipur. Invoice: {{invoice}}',
+  order_confirmed:  'Hi {{name}}, thank you for your Amour Jewels order {{order}}. We received {{amount}} and your pieces are being prepared at the Amour atelier. Invoice: {{invoice}}',
   payment_confirmed:'Payment of {{amount}} received for {{order}} ✔ Your order is confirmed and in the atelier queue.',
-  packed_atelier:   '{{order}} is packed ✨ Hand-finished, quality-checked and sealed in the keepsake box at our Jaipur atelier.',
+  packed_atelier:   '{{order}} is packed ✨ Hand-finished, quality-checked and sealed in the keepsake box at the Amour atelier.',
   shipment_tracking:'{{order}} is on its way 🚚 Courier: {{courier}} · AWB {{awb}}. Track live: {{link}}',
   out_for_delivery: 'Good news — {{order}} is out for delivery today. Please keep {{phone}} reachable for the courier.',
   delivered_care:   'Delivered ✔ We hope you love it. Care tip: keep your piece away from perfume and store it in the pouch provided.',
@@ -1489,11 +1486,11 @@ function renderWhatsApp(el) {
    ============================================================ */
 const DEMO_BANNERS = [
   { id: 'b1', slot: 'Announcement bar', text: 'Complimentary insured shipping on orders above ₹2,500', cta: '/shop', status: 'Live', from: '2026-08-01', to: '2026-12-31' },
-  { id: 'b2', slot: 'Announcement bar', text: 'Handcrafted in 92.5 silver & 18k gold vermeil — Jaipur', cta: '/about', status: 'Live', from: '2026-08-01', to: '2026-12-31' },
+  { id: 'b2', slot: 'Announcement bar', text: 'Handcrafted in 92.5 silver & 18k gold vermeil — Amour Atelier', cta: '/about', status: 'Live', from: '2026-08-01', to: '2026-12-31' },
   { id: 'b3', slot: 'Hero slide 1', text: 'Heirloom jewellery, made for every day', cta: '/shop', status: 'Live', from: '2026-09-01', to: '2026-11-30' },
   { id: 'b4', slot: 'Hero slide 2', text: 'The Bridal Edit ’26 — polki, pearls, promise', cta: '/shop?collection=bridal', status: 'Live', from: '2026-09-01', to: '2026-12-31' },
   { id: 'b5', slot: 'Hero slide 3', text: 'Featherlight everyday gold, under ₹5,000', cta: '/shop?cat=everyday', status: 'Scheduled', from: '2026-10-01', to: '2026-10-31' },
-  { id: 'b6', slot: 'Mid-page strip', text: 'COD available up to ₹5,000 · Easy 7-day exchange', cta: '/policies', status: 'Live', from: '2026-07-01', to: '2027-03-31' }
+  { id: 'b6', slot: 'Mid-page strip', text: 'Easy 7-day exchange · Secure prepaid checkout', cta: '/policies', status: 'Live', from: '2026-07-01', to: '2027-03-31' }
 ];
 
 function sectionTable(sections) {
@@ -1979,11 +1976,11 @@ function renderMessages(el) {
    SHIPPING — rates (live at checkout), couriers, serviceability
    ============================================================ */
 const DEMO_COURIERS = [
-  { name: 'Delhivery',    priority: 1, zones: 'All India',        sla: '3–6 days',  cod: true,  status: 'Connected' },
-  { name: 'Blue Dart',    priority: 2, zones: 'Metros + Tier 2',  sla: '2–3 days',  cod: true,  status: 'Connected' },
-  { name: 'XpressBees',   priority: 3, zones: 'Tier 2 / Tier 3',  sla: '4–7 days',  cod: true,  status: 'Connected' },
-  { name: 'Ecom Express', priority: 4, zones: 'Overflow + COD',   sla: '4–8 days',  cod: true,  status: 'Connected' },
-  { name: 'India Post',   priority: 5, zones: 'Remote PIN codes', sla: '7–12 days', cod: false, status: 'Standby' }
+  { name: 'Delhivery',    priority: 1, zones: 'All India',        sla: '3–6 days',  status: 'Connected' },
+  { name: 'Blue Dart',    priority: 2, zones: 'Metros + Tier 2',  sla: '2–3 days',  status: 'Connected' },
+  { name: 'XpressBees',   priority: 3, zones: 'Tier 2 / Tier 3',  sla: '4–7 days',  status: 'Connected' },
+  { name: 'Ecom Express', priority: 4, zones: 'Overflow',         sla: '4–8 days',  status: 'Connected' },
+  { name: 'India Post',   priority: 5, zones: 'Remote PIN codes', sla: '7–12 days', status: 'Standby' }
 ];
 
 function renderShipping(el) {
@@ -1996,7 +1993,6 @@ function renderShipping(el) {
     ${kpi('Free-shipping threshold', money(S.freeShip), 'live at checkout')}
     ${kpi('Standard rate', money(S.std), '3–6 days')}
     ${kpi('Express rate', money(S.express), '2–3 days')}
-    ${kpi('COD limit', money(S.codLimit), 'above this — prepaid only')}
     <div class="kpi"><span>Shipments in transit</span><b>${inTransit.length}</b><em>tracking synced</em></div>
   </div>
   <div class="adm-grid-2">
@@ -2005,16 +2001,13 @@ function renderShipping(el) {
         ${fld('shFree', 'Free shipping above (₹)', S.freeShip, 'number')}
         ${fld('shStd', 'Standard fee (₹)', S.std, 'number')}
         ${fld('shExp', 'Express fee (₹)', S.express, 'number')}
-        ${fld('shCod', 'COD fee (₹)', S.codFee, 'number')}
-        ${fld('shLimit', 'COD order limit (₹)', S.codLimit, 'number')}
       </div>
       <button class="adm-btn dark" id="shSave">Save rates</button>
       <p class="adm-note">Saving writes to <span class="adm-url">STORE</span> — the cart and checkout read the new numbers instantly.</p>
     </div>
     <div class="adm-card"><h3>Courier partners</h3>
-      ${tbl(['Courier', 'Priority', 'Zones', 'SLA', 'COD', 'Status'], DEMO_COURIERS.map(c => tr([
+      ${tbl(['Courier', 'Priority', 'Zones', 'SLA', 'Status'], DEMO_COURIERS.map(c => tr([
         '<b>' + esc(c.name) + '</b>', c.priority, esc(c.zones), esc(c.sla),
-        c.cod ? chip('Yes', 'ok') : chip('No', 'warn'),
         chip(c.status, c.status === 'Connected' ? 'ok' : 'info')
       ])))}
       <p class="adm-note">Routing picks the cheapest serviceable courier per PIN code; failed pickups auto-reassign to the next partner.</p>
@@ -2025,12 +2018,12 @@ function renderShipping(el) {
   <div class="adm-grid-2" style="margin-top:14px">
     <div class="adm-card"><h3>Serviceability checker</h3>
       <div class="f-grid">
-        ${fld('pinCheck', 'PIN code', '302001')}
+        ${fld('pinCheck', 'PIN code', '110001')}
         ${fld('pinValue', 'Cart value (₹)', 4850, 'number')}
       </div>
       <button class="adm-btn dark" id="pinRun">Check PIN code</button>
       <div id="pinOut" style="margin-top:14px"></div>
-      <p class="adm-note">Uses the same <span class="adm-url">pincodeInfo()</span> rules as the product page widget: zone ETAs, COD eligibility and courier choice.</p>
+      <p class="adm-note">Uses the same <span class="adm-url">pincodeInfo()</span> rules as the product page widget: zone ETAs and courier choice.</p>
     </div>
     <div class="adm-card"><h3>Packaging &amp; insurance</h3>
       <table class="adm-kv"><tbody>
@@ -2046,8 +2039,7 @@ function renderShipping(el) {
   </div>`;
   el.querySelector('#shSave').addEventListener('click', () => {
     saveSettings({ shipping: {
-      freeShip: +gv(el, 'shFree') || 0, std: +gv(el, 'shStd') || 0, express: +gv(el, 'shExp') || 0,
-      codFee: +gv(el, 'shCod') || 0, codLimit: +gv(el, 'shLimit') || 0
+      freeShip: +gv(el, 'shFree') || 0, std: +gv(el, 'shStd') || 0, express: +gv(el, 'shExp') || 0
     } });
     audit('Shipping rates updated (free above ' + money(+gv(el, 'shFree')) + ')');
     toast('Shipping rates saved — live at checkout');
@@ -2059,13 +2051,11 @@ function renderShipping(el) {
     const out = el.querySelector('#pinOut');
     if (!info) { out.innerHTML = '<div class="adm-alert bad"><span>⚠️</span><div>Enter a valid 6-digit PIN code.</div></div>'; return; }
     const cartValue = +gv(el, 'pinValue') || 0;
-    const codOk = info.cod && cartValue <= S.codLimit;
     const shipping = cartValue >= S.freeShip ? 0 : S.std;
     out.innerHTML = `<table class="adm-kv"><tbody>
       <tr><td>Serviceable</td><td>${info.serviceable ? 'Yes' : 'No'}</td></tr>
       <tr><td>Courier</td><td>${esc(info.courier)}</td></tr>
       <tr><td>ETA</td><td>${esc(info.eta)}</td></tr>
-      <tr><td>COD</td><td>${codOk ? 'Available' : 'Not available'}</td></tr>
       <tr><td>Express</td><td>${info.express ? 'Available' : 'No'}</td></tr>
       <tr><td>Shipping charged</td><td>${shipping ? money(shipping) : 'Free'}</td></tr>
     </tbody></table>`;
@@ -2080,7 +2070,7 @@ function renderGST(el) {
   seedOrdersIfEmpty();
   const orders = getOrders();
   const rows = orders.map(o => {
-    const buyerState = (o.customer && o.customer.state) || 'Rajasthan';
+    const buyerState = (o.customer && o.customer.state) || STORE.sellerState;
     const g = gstSplit(o.sub || 0, G.rate, buyerState);
     return { o, g, buyerState };
   });
@@ -2093,7 +2083,7 @@ function renderGST(el) {
   <div class="kpis" style="grid-template-columns:repeat(auto-fit,minmax(165px,1fr))">
     ${kpi('GST rate', (G.rate * 100).toFixed(1) + '%', G.inclusive ? 'tax-inclusive pricing' : 'tax-exclusive pricing')}
     ${kpi('Taxable value', money(taxable), 'on ' + orders.length + ' invoices')}
-    ${kpi('CGST + SGST', money(cgst + sgst), 'intra-state (Rajasthan)')}
+    ${kpi('CGST + SGST', money(cgst + sgst), 'intra-state supply')}
     ${kpi('IGST', money(igst), 'inter-state supply')}
     ${kpi('Credit notes', '1', 'against returns')}
   </div>
@@ -2155,7 +2145,7 @@ const SECURITY_CHECKS = [
   ['SSL / HTTPS', 'TLS 1.3, HSTS enabled, auto-renewing certificate', true],
   ['Payment gateway', 'PCI-DSS Level 1 gateway · tokenised cards', true],
   ['Card data on our server', 'Never stored, never logged — tokens only', true],
-  ['OTP authentication', 'Customer login and COD verification', true],
+  ['OTP authentication', 'Customer login and order verification', true],
   ['Admin 2FA', 'Every admin account, enforced at sign-in', true],
   ['Role-based access', 'Owner · Operations · Accountant · Marketing scopes', true],
   ['Automated backups', 'Daily 03:00 IST, 30-day retention, off-site', true],
@@ -2212,7 +2202,7 @@ function renderSettings(el) {
   const roles = S.roles || [
     { role: 'Owner',      user: 'amour',      scope: 'Full access — catalogue, orders, costs, settings, staff', twofa: true },
     { role: 'Operations', user: 'ops_meera',   scope: 'Orders, inventory, returns, shipping — no costs or settings', twofa: true },
-    { role: 'Accountant', user: 'accounts_raj', scope: 'GST, invoices, refunds — no customer PII, no catalogue', twofa: true },
+    { role: 'Accountant', user: 'accounts_amour', scope: 'GST, invoices, refunds — no customer PII, no catalogue', twofa: true },
     { role: 'Marketing',  user: 'mkt_nikita',  scope: 'Coupons, banners, blog, WhatsApp — no GST or customer data', twofa: true }
   ];
   el.innerHTML = `
@@ -2286,7 +2276,7 @@ const SEC_TITLES = {
   inventory: 'Inventory', customers: 'Customers', reviews: 'Reviews', returns: 'Returns & RTO',
   coupons: 'Coupons & Gift Cards', discounts: 'Automatic Discounts', marketing: 'Marketing & Tracking',
   whatsapp: 'WhatsApp Journeys', homepage: 'Homepage & Banners', blog: 'The Journal', seo: 'SEO & Metadata',
-  abandoned: 'Abandoned Carts', messages: 'Customer Messages', shipping: 'Shipping & COD',
+  abandoned: 'Abandoned Carts', messages: 'Customer Messages', shipping: 'Shipping',
   gst: 'GST & Invoicing', settings: 'Settings & Backup'
 };
 const RENDERERS = {

@@ -71,14 +71,13 @@ function renderCartPage() {
       <h3>Order Summary</h3>
       <div class="sum-row"><span>Subtotal</span><span>${money(sub)}</span></div>
       <div class="sum-row"><span>Shipping</span>${ship === 0 ? '<span class="free">FREE — insured</span>' : '<span>₹99</span>'}</div>
-      <div class="sum-row"><span>COD fee</span><span class="free">₹0 — waived</span></div>
       <div class="sum-row total"><span>Total</span><span>${money(sub + ship)}</span></div>
       <p class="sum-note">${ship === 0 ? 'Free insured shipping unlocked.' : 'Add ' + money(FREE_SHIP - sub) + ' more for free insured shipping.'} Taxes included. Exchange window: 7 days.</p>
       <button class="btn wide" id="checkoutBtn">Buy Now</button>
       <div class="trust-lines">
         <p><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 3l7 3v5c0 5-3 8.5-7 10-4-1.5-7-5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg> Insured shipping — free above ₹2,500</p>
         <p><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 3l7 3v5c0 5-3 8.5-7 10-4-1.5-7-5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg> 7-day exchange, no questions asked</p>
-        <p><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="2" y="6" width="20" height="12" rx="1"/><path d="M2 10h20"/></svg> UPI · Cards · NetBanking · COD up to ₹10,000</p>
+        <p><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="2" y="6" width="20" height="12" rx="1"/><path d="M2 10h20"/></svg> Secure prepaid — UPI · Cards · NetBanking</p>
       </div>
     </aside>
   </div>`;

@@ -8,12 +8,14 @@
 const STORE = {
   brand: 'Amour Jewels',
   legalName: 'Amour Jewels Retail LLP',
+  founded: 2019,          /* single source of truth for "years of craft" */
+  karigars: 40,           /* in-house craftspeople — the one figure only the business can assert */
   gstin: '08AAGCA1234K1ZP',
   pan: 'AAGCA1234K',
-  address: '2nd Floor, Gopalbari Lane, Johari Bazaar, Jaipur, Rajasthan — 302003',
+  address: 'India',
   email: 'care@amourjewels.in',
   phone: '+91 90000 40000',
-  sellerState: 'Rajasthan',
+  sellerState: 'India',
   hours: 'Mon–Sat · 11 am – 8 pm IST',
   grievance: {
     name: 'Meera Kothari',
@@ -23,7 +25,7 @@ const STORE = {
     sla: 'Acknowledgement within 48 hrs · resolution within 30 days'
   },
   freeShip: 2500,
-  ship: { std: 99, express: 249, codFee: 0, codLimit: 5000 },
+  ship: { std: 99, express: 249 },
   couriers: ['Delhivery', 'Blue Dart', 'XpressBees', 'Ecom Express'],
   metroPrefixes: ['11','40','56','60','70','50','38','41','60','64'],
   gst: { rate: 0.03, inclusive: true, hsnDefault: '7117', roundOff: true },
@@ -48,20 +50,17 @@ const BCAST_KEY    = 'amour_broadcasts_v1';      /* admin broadcast log (audienc
 
 /* ---------- pincode serviceability (deterministic demo) ----------
    In production: courier-serviceability API. Here: realistic rules —
-   serviceable unless it starts with 9 (army/foreign POS),
-   COD blocked on a deterministic subset, ETA by zone.               */
+   serviceable unless it starts with 9 (army/foreign POS), ETA by zone.   */
 function pincodeInfo(pin) {
   if (!/^\d{6}$/.test(pin)) return null;
   const prefix = pin.slice(0, 2);
   const sum = pin.split('').reduce((a, d) => a + (+d), 0);
   const serviceable = pin[0] !== '9';
-  const isRaj = pin.startsWith('30');
   return {
     pin,
     serviceable,
-    cod: serviceable && sum % 7 !== 0,
-    eta: isRaj ? '1–2 days' : STORE.metroPrefixes.includes(prefix) ? '2–3 days' : '3–6 days',
-    courier: isRaj ? 'Delhivery' : (sum % 2 ? 'Delhivery' : 'Blue Dart'),
+    eta: STORE.metroPrefixes.includes(prefix) ? '2–3 days' : '3–6 days',
+    courier: sum % 2 ? 'Delhivery' : 'Blue Dart',
     express: serviceable
   };
 }
@@ -85,6 +84,32 @@ const ORDERS_KEY = 'amour_orders_v1';
 function getOrders() { try { return JSON.parse(localStorage.getItem(ORDERS_KEY)) || []; } catch (e) { return []; } }
 function saveOrders(o) { localStorage.setItem(ORDERS_KEY, JSON.stringify(o)); }
 
+/* ---------- demo-seed migration ----------
+   Demo orders written to localStorage before the rebrand kept the old
+   origin data in `customer`. seedOrdersIfEmpty() only fires on an empty
+   store, so those rows would otherwise live on forever — showing up in the
+   admin register, tax invoices and the tracking page. Refresh the three
+   demo seeds in place; real customer orders are never touched.        */
+const LEGACY_DEMO_ORDERS = {
+  AJ20260001: { city: 'Delhi',    state: 'Delhi',       pin: '110001' },
+  AJ20260002: { city: 'Mumbai',   state: 'Maharashtra', pin: '400001' },
+  AJ20260003: { city: 'Ludhiana', state: 'Punjab',      pin: '141001' }
+};
+function migrateLegacyDemoOrders() {
+  const orders = getOrders();
+  if (!orders.length) return;
+  let changed = false;
+  orders.forEach(o => {
+    const fix = LEGACY_DEMO_ORDERS[o.id];
+    if (!fix || !o.customer) return;
+    Object.keys(fix).forEach(k => {
+      if (String(o.customer[k] || '') !== fix[k]) { o.customer[k] = fix[k]; changed = true; }
+    });
+  });
+  if (changed) saveOrders(orders);
+}
+migrateLegacyDemoOrders();
+
 /* demo orders for tracking/admin demo when no real order exists */
 function seedOrdersIfEmpty() {
   if (getOrders().length) return;
@@ -101,8 +126,8 @@ function seedOrdersIfEmpty() {
     };
   };
   saveOrders([
-    mk('AJ20260001', 'Ananya Sharma', 'Jaipur', 'Rajasthan', '302001', 'UPI', 'Delivered', 9, 0),
-    mk('AJ20260002', 'Rhea Kapoor', 'Mumbai', 'Maharashtra', '400001', 'COD', 'In Transit', 2, 2),
+    mk('AJ20260001', 'Ananya Sharma', 'Delhi', 'Delhi', '110001', 'UPI', 'Delivered', 9, 0),
+    mk('AJ20260002', 'Rhea Kapoor', 'Mumbai', 'Maharashtra', '400001', 'Card', 'In Transit', 2, 2),
     mk('AJ20260003', 'Meher Deol', 'Ludhiana', 'Punjab', '141001', 'UPI', 'Placed', 0, 4)
   ]);
 }
@@ -144,9 +169,9 @@ function trackEvent(name, data) {
   if (A.enabled && A.conversion && window.gtag) gtag('event', name, data || {});
   if (A.enabled && A.conversion && window.fbq) fbq('track', name, data || {});
 }
-const SETTINGS_KEY = 'amour_settings_v2'; /* v2 — COD limit moved ₹10,000 → ₹5,000; old saved settings ignored */
+const SETTINGS_KEY = 'amour_settings_v3'; /* v3 — prepaid only. Old saved settings ignored. */
 const DEFAULT_SETTINGS = {
-  shipping: { freeShip: STORE.freeShip, std: STORE.ship.std, express: STORE.ship.express, codFee: STORE.ship.codFee, codLimit: STORE.ship.codLimit },
+  shipping: { freeShip: STORE.freeShip, std: STORE.ship.std, express: STORE.ship.express },
   gst: { rate: STORE.gst.rate, inclusive: STORE.gst.inclusive, hsnDefault: STORE.gst.hsnDefault, roundOff: STORE.gst.roundOff },
   analytics: { enabled: false, ga4: 'G-XXXXXXXXXX', metaPixel: '000000000000000', searchConsole: '', merchantCenter: '', metaCatalogue: '', conversion: true },
   whatsapp: { enabled: true, number: STORE.whatsapp.number, stages: { placed: true, paid: true, packed: true, shipped: true, ofd: true, delivered: true, review: true } },
@@ -184,7 +209,7 @@ function saveSettings(patch) {
 function applyStoreSettings() {
   const s = getSettings();
   STORE.freeShip = +s.shipping.freeShip;
-  STORE.ship = { std: +s.shipping.std, express: +s.shipping.express, codFee: +s.shipping.codFee, codLimit: +s.shipping.codLimit };
+  STORE.ship = { std: +s.shipping.std, express: +s.shipping.express };
   STORE.gst = { rate: +s.gst.rate, inclusive: !!s.gst.inclusive, hsnDefault: s.gst.hsnDefault, roundOff: !!s.gst.roundOff };
   STORE.whatsapp = { number: s.whatsapp.number, enabled: !!s.whatsapp.enabled };
   ANALYTICS.enabled = !!s.analytics.enabled;

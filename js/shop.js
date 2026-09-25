@@ -15,7 +15,7 @@ function readParams() {
 function bannerCopy() {
   const head = $('#bannerHead'), title = $('#bannerTitle'), lede = $('#bannerLede');
   let h = 'Shop All';
-  let l = 'Every piece hand-finished in our Jaipur atelier — 92.5 silver, brass and 18k gold vermeil, set with moissanite polki and hand-picked stones.';
+  let l = 'Every piece hand-finished in our atelier — 92.5 silver, brass and 18k gold vermeil, set with moissanite polki and hand-picked stones.';
   if (shopState.cat && CATEGORIES[shopState.cat]) {
     h = CATEGORIES[shopState.cat].label;
     l = {

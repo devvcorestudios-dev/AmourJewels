@@ -1,6 +1,6 @@
 /* ============================================================
    AMOUR JEWELS — Checkout (address → payment → success)
-   + pincode serviceability & COD check · coupons/gift/referral
+   + pincode serviceability · coupons/gift/referral
    + shipping method & rates · GST breakup · order persistence
    ============================================================ */
 
@@ -24,7 +24,7 @@ const fieldOk = {
 function checkPincode() {
   const box = $('#cxShipBox');
   const pin = $('#cxPincode').value.trim();
-  if (!/^\d{6}$/.test(pin)) { box.hidden = true; updateCodState(); return; }
+  if (!/^\d{6}$/.test(pin)) { box.hidden = true; return; }
   const info = pincodeInfo(pin);
   box.hidden = false;
   if (!info.serviceable) {
@@ -32,26 +32,8 @@ function checkPincode() {
     box.innerHTML = `<b>✕ Not serviceable</b><p>Sorry — we don't ship to ${pin} yet. Write to <a href="mailto:${STORE.email}">${STORE.email}</a> and we'll try.</p>`;
   } else {
     box.className = 'ship-widget ok';
-    box.innerHTML = `<b>✓ Serviceable — ${info.courier}</b><p>Estimated delivery <b>${info.eta}</b> · COD ${info.cod ? '<b class="ok">available</b>' : '<b class="no">not available</b>'} · Insured, fully tracked.</p>`;
+    box.innerHTML = `<b>✓ Serviceable — ${info.courier}</b><p>Estimated delivery <b>${info.eta}</b> · Insured, fully tracked.</p>`;
   }
-  updateCodState();
-}
-
-function codAllowed() {
-  const info = pincodeInfo($('#cxPincode').value.trim());
-  return !!(info && info.serviceable && info.cod && cartSubtotal() + shipCost() <= STORE.ship.codLimit);
-}
-
-function updateCodState() {
-  const cod = $('#cxPayForm input[name="payMethod"][value="COD"]');
-  if (!cod) return;
-  const ok = codAllowed();
-  cod.disabled = !ok;
-  cod.closest('.pay-opt').classList.toggle('off', !ok);
-  cod.closest('.pay-opt').querySelector('span').textContent = ok
-    ? 'Pay when it reaches you'
-    : (cartSubtotal() > STORE.ship.codLimit ? `COD limit ₹${STORE.ship.codLimit.toLocaleString('en-IN')}` : 'Not available at this pincode');
-  if (!ok && cod.checked) { $('#cxPayForm input[name="payMethod"][value="UPI"]').checked = true; }
 }
 
 /* ---------- shipping method & rates ---------- */
@@ -125,11 +107,7 @@ function renderSummary() {
   const g = t.gst;
   $('#cxGst').innerHTML = `Incl. GST (${Math.round(g.rate * 1000) / 10}%) — ${g.intra ? 'CGST ' + money(g.cgst) + ' + SGST ' + money(g.sgst) : 'IGST ' + money(g.igst)}`;
   $('#cxTotal').textContent = money(t.total);
-  const method = ($('#cxPayForm input[name="payMethod"]:checked') || {}).value || 'UPI';
-  $('#cxPayNow').textContent = method === 'COD'
-    ? `Place Order — ${money(t.total)}`
-    : `Pay ${money(t.total)} Securely`;
-  updateCodState();
+  $('#cxPayNow').textContent = `Pay ${money(t.total)} Securely`;
 }
 
 function setStep(n) {
@@ -216,14 +194,13 @@ document.addEventListener('DOMContentLoaded', () => {
     setStep(2);
   });
 
-  /* step 2 → 3 */
+  /* step 2 → 3 — prepaid only */
   $('#cxPayForm').addEventListener('submit', e => {
     e.preventDefault();
-    const method = $('#cxPayForm input[name="payMethod"]:checked').value;
-    if (method === 'COD' && !codAllowed()) { toast('COD is not available for this order'); return; }
+    const method = ($('#cxPayForm input[name="payMethod"]:checked') || {}).value || 'UPI';
     const btn = $('#cxPayNow');
     btn.disabled = true;
-    btn.textContent = method === 'COD' ? 'Placing order…' : 'Processing payment…';
+    btn.textContent = 'Processing payment…';
 
     setTimeout(() => {
       const t = totals();
@@ -248,11 +225,11 @@ document.addEventListener('DOMContentLoaded', () => {
       sessionStorage.removeItem(COUPON_SESSION_KEY);
       trackEvent('Purchase', { value: t.total, currency: 'INR', transaction_id: orderId });
       syncBadges(); renderDrawer(); renderSummary();
-      $('#cxOrderId').textContent = `Order ${orderId} · ${method === 'COD' ? 'COD' : method + ' paid'} · ${money(t.total)}`;
+      $('#cxOrderId').textContent = `Order ${orderId} · ${method} paid · ${money(t.total)}`;
       $('#cxWaBtn').href = 'https://wa.me/' + STORE.whatsapp.number + '?text=' + encodeURIComponent('Hi Amour Jewels! Please send me order updates for ' + orderId + ' on WhatsApp.');
       $('#cxSuccessName').textContent = addr.name || 'friend';
       setStep(3);
-      toast(method === 'COD' ? 'Order placed! Pay on delivery ♥' : 'Payment successful — order placed ♥');
+      toast('Payment successful — order placed ♥');
     }, 1600);
   });
 

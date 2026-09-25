@@ -62,7 +62,7 @@ function actionsHTML(order) {
 function scanTrail(order) {
   const idx = stageIndex(order.status);
   const dest = (order.customer && order.customer.city) || 'your city';
-  const locs = ['Jaipur — Amour Atelier', 'Jaipur — Amour Atelier', 'Jaipur — Courier facility',
+  const locs = ['Amour Atelier', 'Amour Atelier', 'Amour courier facility',
     'Regional hub — moving towards ' + dest, dest + ' — with delivery executive', 'Delivered at ' + dest];
   const evts = ['Order placed', 'Packed at the atelier', 'Shipped — picked up by courier',
     'In transit', 'Out for delivery', 'Delivered — signed at doorstep'];
@@ -87,7 +87,7 @@ function renderOrder(order) {
   let shipHTML = '';
   if (order.status === 'Placed' || order.status === 'Packed') {
     shipHTML = `<div class="ship-state pre"><span class="ss-ico">📦</span><div><b>Not shipped yet</b>
-      <span>${order.status === 'Placed' ? 'Payment verified — packing at our Jaipur atelier. Ships within 24–48 hrs.' : 'Packed in the signature keepsake box — courier pickup scheduled.'}</span></div></div>`;
+      <span>${order.status === 'Placed' ? 'Payment verified — packing at the Amour atelier. Ships within 24–48 hrs.' : 'Packed in the signature keepsake box — courier pickup scheduled.'}</span></div></div>`;
   } else if (['Shipped', 'In Transit', 'Out for Delivery'].includes(order.status)) {
     shipHTML = `<div class="ship-state"><span class="ss-ico">🚚</span><div><b>Shipped — ${order.status}</b>
       <span>Currently: ${LAST.loc} · AWB ${order.awb} with ${order.courier}.</span></div></div>`;

@@ -2,7 +2,7 @@
    AMOUR JEWELS — Product detail page
    ============================================================ */
 
-const SHIP_COPY = 'Dispatched in 24–48 hrs from Jaipur via Delhivery / BlueDart, fully insured. Metro delivery in 2–3 days, rest of India in 3–6. COD available up to ₹5,000 — above that, prepaid only.';
+const SHIP_COPY = 'Dispatched in 24–48 hrs from our atelier via Delhivery / BlueDart, fully insured. Metro delivery in 2–3 days, rest of India in 3–6 days. All orders are prepaid (UPI, cards, net-banking).';
 
 let pdp = { size: null, qty: 1 };
 
@@ -50,7 +50,7 @@ function infoHTML(p) {
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2zm5.5 14.1c-.2.7-1.2 1.3-1.7 1.3-.4.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.5-2.6-1.1-4.3-3.7-4.4-3.9-.1-.2-1-1.4-1-2.6s.6-1.8.9-2c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.9 2.1c.1.2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3.1.2.1.8-.1 1.4z"/></svg>
       Order on WhatsApp</a>
     <div class="ship-widget" id="pdpShipCheck" style="margin-top:18px">
-      <b>Delivery &amp; COD</b>
+      <b>Delivery &amp; Prepaid Checkout</b>
       <div class="coupon-row">
         <input id="pdpPin" placeholder="Enter pincode" inputmode="numeric" maxlength="6" style="text-transform:none">
         <button class="btn ghost" id="pdpPinBtn" type="button">Check</button>
@@ -68,7 +68,7 @@ function infoHTML(p) {
       </div>
       <div>
         <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><rect x="2" y="6" width="20" height="12" rx="1"/><path d="M2 10h20"/></svg>
-        <span>COD available</span>
+        <span>Secure prepaid payments</span>
       </div>
     </div>
     <div class="accordions" id="pdpAcc">
@@ -148,7 +148,7 @@ function bindPDP(p) {
     const info = pincodeInfo($('#pdpPin').value);
     if (!info) { res.textContent = 'Enter a valid 6-digit pincode.'; return; }
     if (!info.serviceable) res.innerHTML = '✕ Not serviceable at ' + info.pin + ' yet.';
-    else res.innerHTML = '✓ Delivers in <b>' + info.eta + '</b> via ' + info.courier + ' · COD ' + (info.cod ? 'available' : 'not available here') + '.';
+    else res.innerHTML = '✓ Delivers in <b>' + info.eta + '</b> via ' + info.courier + ' · Secure prepaid checkout.';
   };
   if (pinBtn) {
     pinBtn.addEventListener('click', pinCheck);

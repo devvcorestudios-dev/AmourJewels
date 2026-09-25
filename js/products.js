@@ -25,7 +25,7 @@ const PRODUCTS = [
     tag: 'Bestseller', rating: 4.9, reviews: 212,
     img: IMG('1601121141461-9d6647bca1ed', 900),
     alt: IMG('1633934542430-0905ccb5f050', 900),
-    desc: 'A museum-grade reproduction of a 1940s Rajasthani bridal choker, hand-cast in antique gold and set with ruby-red crystal drops. Comes with matching stud earrings.',
+    desc: 'A museum-grade reproduction of a 1940s bridal choker, hand-cast in antique gold and set with ruby-red crystal drops. Comes with matching stud earrings.',
     details: [
       'Brass core, finished in 2-micron antique gold plating',
       'Hand-set ruby crystal stones with pearl drop detailing',
@@ -311,7 +311,7 @@ const PRODUCTS = [
       'Crossover silhouette, 42 channel-set CZ',
       'Band width 4.5 mm at the crossover',
       'Sizes 6–9 · free resizing within 30 days',
-      'Hand-finished in Jaipur'
+      'Hand-finished in India'
     ],
     sizes: [6, 7, 8, 9]
   },

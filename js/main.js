@@ -381,10 +381,10 @@ function acctAddrsHTML() {
       <div><label class="acct-lab">Mobile number</label><input class="acct-input" id="afPhone" type="tel" maxlength="10" placeholder="98765 43210"></div>
       <div><label class="acct-lab">Address (house, street, area)</label><input class="acct-input" id="afAddr" placeholder="Flat 402, Rose Residency, MG Road"></div>
       <div class="two">
-        <div><label class="acct-lab">Pincode</label><input class="acct-input" id="afPin" type="tel" maxlength="6" placeholder="302001"></div>
-        <div><label class="acct-lab">City</label><input class="acct-input" id="afCity" placeholder="Jaipur"></div>
+        <div><label class="acct-lab">Pincode</label><input class="acct-input" id="afPin" type="tel" maxlength="6" placeholder="110001"></div>
+        <div><label class="acct-lab">City</label><input class="acct-input" id="afCity" placeholder="Your city"></div>
       </div>
-      <div><label class="acct-lab">State</label><input class="acct-input" id="afState" placeholder="Rajasthan"></div>
+      <div><label class="acct-lab">State</label><input class="acct-input" id="afState" placeholder="Your state"></div>
       <p class="acct-msg" id="addrMsg"></p>
       <button class="btn" type="submit">Save address</button>
     </form>` : '';
@@ -694,12 +694,90 @@ function initGlobalCommerce() {
   }
 }
 
+/* ---------- live proof numbers ----------
+   No "proof" figure on the site is typed by hand. Everything is
+   derived from real data at runtime:
+     founded → STORE.founded                (js/store-config.js)
+     years   → this year − founded
+     karigars→ STORE.karigars               (owner-declared business fact)
+     pieces  → PRODUCTS.length              (js/products.js)
+     reviews → Σ PRODUCTS[].reviews
+     rating  → review-weighted mean of PRODUCTS[].rating
+   Change the catalogue or the founding year and every page follows.
+   Markup contract:  [data-proof="founded|years|karigars|pieces|reviews|rating"]
+                     [data-proof-suffix="+"]  → renders as a small gold <sup>
+                     [data-proof-claim]       → "4.8 / 5 — 2,056 reviews"            */
+function proofNumbers() {
+  const rated = PRODUCTS.filter(p => +p.rating > 0 && +p.reviews > 0);
+  const reviews = rated.reduce((n, p) => n + +p.reviews, 0);
+  const weighted = rated.reduce((n, p) => n + (+p.rating * +p.reviews), 0);
+  const founded = +STORE.founded || new Date().getFullYear();
+  return {
+    founded,
+    years: Math.max(1, new Date().getFullYear() - founded),
+    karigars: +STORE.karigars || 0,
+    pieces: PRODUCTS.length,
+    reviews,
+    rating: reviews ? weighted / reviews : 0
+  };
+}
+
+function renderProof() {
+  const n = proofNumbers();
+  const fmt = {
+    founded: String(n.founded),
+    years: n.years,
+    karigars: n.karigars,
+    pieces: n.pieces,
+    reviews: n.reviews.toLocaleString('en-IN'),
+    rating: n.rating.toFixed(1)
+  };
+  $$('[data-proof]').forEach(el => {
+    const key = el.dataset.proof;
+    if (fmt[key] === undefined) return;
+    /* optional suffix keeps the typographic treatment ("40"+"+") while
+       the figure itself stays live */
+    const suffix = el.dataset.proofSuffix;
+    if (suffix) el.innerHTML = fmt[key] + '<sup>' + suffix + '</sup>';
+    else el.textContent = fmt[key];
+  });
+  /* hero trust card — real star average, real review count */
+  const claim = $('[data-proof-claim]');
+  if (claim) claim.textContent = `${fmt.rating} / 5 — ${fmt.reviews} reviews`;
+  /* section note above the review grid */
+  const note = $('[data-proof-note]');
+  if (note) note.innerHTML = `Rated <b>${fmt.rating} / 5</b> across ${fmt.reviews} verified reviews`;
+  /* store-config-driven prices in chrome copy (free-shipping threshold) */
+  $$('[data-store-money]').forEach(el => {
+    const key = el.dataset.storeMoney;
+    if (typeof STORE[key] === 'number') el.textContent = money(STORE[key]);
+  });
+  /* aggregateRating — Google shows the same stars the page does */
+  if (n.reviews) {
+    const ld = document.createElement('script');
+    ld.type = 'application/ld+json';
+    ld.textContent = JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Organization',
+      name: STORE.brand,
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: +fmt.rating,
+        reviewCount: n.reviews,
+        bestRating: 5
+      }
+    });
+    document.head.appendChild(ld);
+  }
+}
+
 /* ---------- page boot ---------- */
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
   initChrome();
   syncBadges();
   renderDrawer();
   initReveal();
+  renderProof();
   initHeroSlider();
   initGlobalCommerce();
 
