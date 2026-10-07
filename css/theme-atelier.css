@@ -1,0 +1,154 @@
+/* ============================================================
+   AMOUR JEWELS — THEME "ATELIER"
+   ------------------------------------------------------------
+   The single theme layer for the whole site. Loaded AFTER
+   css/style.css (and after css/admin.css on admin.html), so it is
+   the last word on palette, type stacks and geometry.
+
+   TYPE
+     --serif   Fraunces  — variable display serif, opsz 9–144,
+                           wght 300–700, true italics. Used for
+                           headlines, prices in editorial contexts,
+                           quotations and the wordmark.
+     --sans    Karla     — variable grotesque, wght 200–800. Used
+                           for body copy, UI, labels and numerals.
+
+   PALETTE   Butter yellow · warm ink · antique gold · bridal wine.
+             The ground of every page is butter. Hierarchy comes
+             from saturation steps of the same yellow rather than
+             from white-vs-colour panels — which is exactly what
+             block-printed cotton and khadi do. Antique gold on
+             butter with a deep maroon accent is what Indian
+             heirloom jewellery looks like under light.
+
+   GEOMETRY  --r is 2px: surfaces are near-square, edges are
+             hairlines, elevation comes from rules rather than
+             soft shadows. Genuine pills (badges, dots, avatars)
+             keep --r-pill.
+
+   No palette switcher — this is the only theme.
+   ============================================================ */
+
+:root{
+  /* — surfaces — one butter family, five saturation steps ————
+     Every surface on the site is butter. There is no white and no
+     cool grey anywhere in the surface layer: hierarchy is carried
+     by saturation alone, the way block-printed cotton reads.
+     champagne  lightest · highlight fills, lit butter on dark
+     cream      raised   · cards, drawers, panels, sticky header
+     champagne  ground   · the page canvas — light butter yellow
+     sand       recessed · section bands, page banners, admin
+     linen      deepest  · media placeholders, tracks, tint bars */
+  --cha--champagne:#fffbe6;    /* lit butter — highlight fill / page ground */
+  --cre--cream:#fdf5c8;        /* raised — cards, drawers, panels, inputs */
+  --sand:#f7e08d;         /* recessed — bands, banners, admin ground */
+  --linen:#eed574;        /* deepest — media placeholders, bars */
+  /* RGB triplets for translucent chrome + light-on-ink accents */
+  --champagne-rgb:255,251,230;
+  /* translucent chrome triplets — kept in step with the surfaces above so the
+     sticky header, hero card and wishlist button never flash white */
+  --ivory-rgb:252,236,168;
+  --cream-rgb:253,245,200;
+
+  /* — ink (warmed so it sits on yellow instead of fighting it) — */
+  --espresso:#1a1712;     /* headings, dark surfaces */
+  --espresso-2:#12100c;   /* hover on dark */
+  --cocoa:#3f382d;        /* body copy — 9.8:1 on the butter ground */
+  --taupe:#6c6455;        /* secondary copy — 4.9:1 on the butter ground */
+  --stone:#74685c;        /* tertiary · disabled · placeholders — AA on ground */
+
+  /* — gold (deepened: labels must clear AA on a yellow ground) — */
+  --gold:#ad7d22;
+  --gold-deep:#7d590f;    /* 5.4:1 on butter — kickers, micro-labels */
+  --gold-soft:#e8c877;    /* gold on dark surfaces */
+
+  /* — wine (bridal maroon): sale, wishlist, errors, badges — */
+  --wine:#7b2231;
+  --wine-deep:#5e1826;
+
+  /* — rules & elevation (warm hairlines, never blue-black on yellow) — */
+  --line:rgba(56,42,12,.20);
+  --line-soft:rgba(56,42,12,.10);
+  --line-gold:rgba(160,113,30,.50);
+  --shadow:0 26px 60px -40px rgba(84,64,12,.32);
+
+  /* — type stacks — */
+  --serif:'Fraunces',ui-serif,Georgia,'Times New Roman',serif;
+  --sans:'Karla',system-ui,-apple-system,'Segoe UI',sans-serif;
+
+  /* — geometry — */
+  --r:2px;
+  --r-pill:99px;
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --container:1320px;
+
+  /* — status — */
+  --success:#3f6b34;
+  --fail:#8e2f28;
+  --fail-line:rgba(142,47,40,.4);
+  --fail-tint:rgba(142,47,40,.07);
+  --warn:#8a6d1a;
+  --refresh:#3f7a4a;      /* whatsapp · live accents */
+}
+
+/* ============================================================
+   TYPOGRAPHY DETAIL
+   Small caps-ish kerning for labels, real optical sizing for the
+   serif, and lining figures anywhere a total is printed.
+   ============================================================ */
+body{
+  font-family:var(--sans);font-weight:400;
+  font-optical-sizing:auto;
+  font-kerning:normal;
+  font-variant-ligatures:common-ligatures;
+  letter-spacing:.005em;
+}
+h1,h2,h3,h4,.h-display,.h-1,.h-2,.h-3,.f-logo,.m-logo,.ig-id,.about-quote blockquote,
+.testi blockquote,.value b,.stat b,.ed-num,.acct-welcome{
+  font-family:var(--serif);
+  font-optical-sizing:auto;
+}
+.h-display,.h-1,.h-2,.about-quote blockquote{font-weight:400}
+.about-quote blockquote em,.footer-news h3 em,.split .copy .sig{font-style:italic;font-weight:300}
+.stat b,.kpi b,.sum-row.total,.pdp-price .now{font-variant-numeric:lining-nums tabular-nums}
+input,select,textarea,button{font-family:var(--sans)}
+.inv,.inv *{font-family:var(--sans)}
+.inv h1,.inv .f-logo{font-family:var(--serif)}
+
+/* ============================================================
+   PAPER GRAIN
+   A 4%-opacity fractal-noise film over the whole page. Invisible
+   as a "texture", but it kills the flat vector look that makes a
+   site read as a template — the same trick print scans use.
+   ============================================================ */
+body::after{
+  content:'';position:fixed;inset:0;z-index:400;pointer-events:none;
+  opacity:.04;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23g)'/%3E%3C/svg%3E");
+}
+
+/* ============================================================
+   PALETTE-DRIVEN RETINTS
+   style.css / admin.css carry a few literal colours that bypass
+   the token layer. Re-pointing them here means the whole site —
+   storefront and console — follows the palette above. Specificity
+   is unchanged, so these win purely because this file loads last.
+   ============================================================ */
+
+/* The translucent chrome — sticky header, hero card, wishlist button — and the
+   hero dots / kicker rules now read from --ivory-rgb and --cream-rgb in
+   style.css, so they follow the butter ground on their own and need no retint
+   here. Only the genuine colour correction is left: style.css ships a cool
+   #f4f4f3 for the hero kicker, which is warmed below. */
+.hero-copy .kicker{color:rgba(var(--champagne-rgb),.92)}
+::selection{background:var(--gold-soft);color:var(--espresso)}
+
+/* admin — KPI deltas & status chips */
+.kpi em{color:var(--success)}
+.kpi em.neg{color:var(--fail)}
+.chip.ok{color:var(--success);border-color:var(--success)}
+.chip.warn{color:var(--warn);border-color:var(--warn)}
+.chip.bad{color:var(--fail);border-color:var(--fail)}
+.adm-side .brand span{color:var(--gold-soft)}
+.adm-nav button.active{border-left-color:var(--gold-soft)}
+.adm-ava{background:var(--espresso);color:var(--cream)}
