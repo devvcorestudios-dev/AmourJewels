@@ -874,7 +874,9 @@ document.addEventListener('DOMContentLoaded', () => {
   try { initGlobalCommerce(); } catch (e) {}
 
   const grid = $('#arrivalsGrid');
+  try {
   if (grid) grid.innerHTML = PRODUCTS.filter(p => p.collection === 'new').slice(0, 4).map(cardHTML).join('');
   const best = $('#bestGrid');
   if (best) best.innerHTML = PRODUCTS.filter(p => p.tag === 'Bestseller').slice(0, 4).map(cardHTML).join('');
+  } catch (e) { console.error(e); }
 });

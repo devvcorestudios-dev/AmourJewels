@@ -2,7 +2,7 @@
    AMOUR JEWELS — Order tracking, cancellation, returns/exchange
    ============================================================ */
 
-const RETURNS_KEY = 'amour_returns_v1';
+/* RETURNS_KEY comes from store-config.js */
 const STAGES = [
   { key: 'Placed',           label: 'Order Placed',      note: 'Order confirmed. Payment verified.' },
   { key: 'Packed',           label: 'Packed at Atelier', note: 'Hand-finished, quality-checked and packed in the signature keepsake box.' },

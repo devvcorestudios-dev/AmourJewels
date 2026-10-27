@@ -23,6 +23,62 @@ const NAV_CATEGORIES = ['hand', 'necklaces', 'earrings', 'bracelets', 'hair', 'g
 
 const PRODUCTS = [
   {
+    id: 'mehrunisa-necklace-set',
+    name: 'Mehrunisa Necklace Set',
+    sku: 'AJ-NK-040',
+    cat: ['necklaces'],
+    collection: 'new',
+    price: 33700, mrp: 33700,
+    tag: 'New', rating: 0, reviews: 0,
+    img: './images/mehrunisa-necklace-set-1.jpg',
+    alt: './images/mehrunisa-necklace-set-2.jpg',
+    desc: 'A timeless treasure, crafted for moments that deserve to be remembered. Includes necklace &amp; a pair of earrings. Discover the art of adornment with Amour Jewels.',
+    details: [
+      'Includes: necklace &amp; pair of earrings',
+      'Hand-set kundan-style stones in ruby, sapphire and emerald tones',
+      'Pearl and green onyx-style drops for a regal bridal finish',
+      'Presented in the signature Amour keepsake box'
+    ],
+    sizes: null
+  },
+  {
+    id: 'sunehri-statement-ear-chains',
+    name: 'Sunehri Statement Ear Chains',
+    sku: 'AJ-EA-040',
+    cat: ['earrings', 'hair'],
+    collection: 'new',
+    price: 7999, mrp: 7999,
+    tag: 'New', rating: 0, reviews: 0,
+    img: './images/sunehri-ear-chains-1.jpg',
+    alt: './images/sunehri-ear-chains-2.jpg',
+    desc: '8 layers of pure elegance. Style tip: pair them with a sleek bun or a traditional braid for an effortlessly royal look.',
+    details: [
+      '8 layers of pearls and beaded drops in a single statement piece',
+      'Pairs with a sleek bun or a traditional braid',
+      'Handcrafted in gold-tone finish with pearl and green bead detailing',
+      'Presented in the signature Amour keepsake box'
+    ],
+    sizes: null
+  },
+  {
+    id: 'noor-maang-tika',
+    name: 'Noor Maang Tika',
+    sku: 'AJ-HR-040',
+    cat: ['hair'],
+    collection: 'new',
+    price: 8900, mrp: 8900,
+    tag: 'New', rating: 0, reviews: 0,
+    img: './images/noor-maang-tika-1.jpg',
+    alt: './images/noor-maang-tika-2.jpg',
+    desc: 'A statement showstopper maang tika. Because some jewels are made to steal the spotlight.',
+    details: [
+      'Statement maang tika with pearl and kundan detailing',
+      'Handcrafted in gold-tone finish with jade-green and ruby accents',
+      'Presented in the signature Amour keepsake box'
+    ],
+    sizes: null
+  },
+  {
     id: 'rajwada-antique-choker-set',
     name: 'Rajwada Antique Choker Set',
     sku: 'AJ-NK-011',

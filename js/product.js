@@ -137,8 +137,21 @@ function bindPDP(p) {
 
   const wa = $('#pdpWa');
   if (wa) {
+    const pageUrl = window.location.origin && window.location.origin !== 'null'
+      ? window.location.origin + window.location.pathname + '?id=' + encodeURIComponent(p.id)
+      : window.location.href;
+    const msg = [
+      'Hi Amour Jewels! I would like to order:',
+      '',
+      '*' + p.name + '*',
+      'Price: ' + money(p.price),
+      'SKU: ' + p.sku,
+      'Link: ' + pageUrl,
+      '',
+      'Please confirm availability and delivery details. Thank you!'
+    ].join('\n');
     wa.href = 'https://wa.me/' + (typeof STORE !== 'undefined' ? STORE.whatsapp.number : '919009055502')
-      + '?text=' + encodeURIComponent('Hi Amour Jewels! I would like to order: ' + p.name + ' (' + money(p.price) + ').');
+      + '?text=' + encodeURIComponent(msg);
   }
 
   const pinBtn = $('#pdpPinBtn');
@@ -168,8 +181,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const id = new URLSearchParams(window.location.search).get('id');
   const p = productById(id) || PRODUCTS[0];
   document.title = p.name + ' — Amour Jewels';
-  root.innerHTML = galleryHTML(p) + infoHTML(p);
-  bindPDP(p);
+  try {
+    root.innerHTML = galleryHTML(p) + infoHTML(p);
+    bindPDP(p);
+  } catch (err) {
+    console.error(err);
+    if (window.renderFallback) renderFallback(root, 'We couldn’t load this product right now.');
+    return;
+  }
 
   /* SEO — Product schema */
   const schema = document.createElement('script');

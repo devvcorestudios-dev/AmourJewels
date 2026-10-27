@@ -85,6 +85,46 @@ function getOrders() {
   try { return JSON.parse(localStorage.getItem(ORDERS_KEY)) || []; }
   catch (e) { return []; }
 }
+/* Called by checkout / orders / track / invoice / admin. Demo-order seeding was removed,
+   so this is intentionally a no-op (it just has to exist). */
+function seedOrdersIfEmpty() {}
+
+/* ---------- marketing / analytics loader (gated) ----------
+   main.js calls loadAnalytics(); checkout.js calls trackEvent(); analytics.js wraps trackEvent. */
+const ANALYTICS = {
+  enabled: false,
+  ga4: 'G-XXXXXXXXXX',
+  metaPixel: '000000000000000'
+};
+function loadAnalytics() {
+  const A = getSettings().analytics;
+  if (!A.enabled) return;
+  if (A.ga4) {
+    const s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + A.ga4;
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    gtag('js', new Date());
+    gtag('config', A.ga4);
+  }
+  if (A.metaPixel) {
+    window.fbq = window.fbq || function () { (window.fbq.queue = window.fbq.queue || []).push(arguments); };
+    window.fbq.queue = window.fbq.queue || [];
+    const s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://connect.facebook.net/en_US/fbevents.js';
+    document.head.appendChild(s);
+    fbq('init', A.metaPixel);
+    fbq('track', 'PageView');
+  }
+}
+function trackEvent(name, data) {
+  const A = getSettings().analytics;
+  if (A.enabled && A.conversion && window.gtag) gtag('event', name, data || {});
+  if (A.enabled && A.conversion && window.fbq) fbq('track', name, data || {});
+}
 function saveOrders(o) { try { localStorage.setItem(ORDERS_KEY, JSON.stringify(o)); } catch (e) {} }
 
 const DEFAULT_SETTINGS = {
@@ -92,6 +132,7 @@ const DEFAULT_SETTINGS = {
   gst: { rate: STORE.gst.rate, inclusive: STORE.gst.inclusive, hsnDefault: STORE.gst.hsnDefault, roundOff: STORE.gst.roundOff },
   analytics: { enabled: false, ga4: 'G-XXXXXXXXXX', metaPixel: '00000000000000', searchConsole: '', merchantCenter: '', metaCatalogue: '', conversion: true },
   security: { admin2fa: true, customerOtp: true, captcha: true, waf: true, ssl: true, backups: 'Daily 03:00 IST', retention: '30 days', lockout: 5, sessionMins: 60 },
+  whatsapp: { enabled: true, number: STORE.whatsapp.number, stages: { placed: true, paid: true, packed: true, shipped: true, ofd: true, delivered: true, review: true } },
   seo: { suffix: STORE.brand, sitemap: true, robots: true, cleanUrls: true, canonical: true, schema: true },
   marketing: { firstOrder: 10, referral: 10, abandoned: { nudge: '60 min', follow: '24 hrs (+5% code)', final: '72 hrs' }, recovered: {}, broadcast: {} }
 };
