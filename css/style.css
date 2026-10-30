@@ -736,7 +736,7 @@ h1 em,h2 em,h3 em,h4 em{font-style:italic;font-weight:400}
 .wish-toggle.active svg{fill:var(--wine)}
 .pdp-order-note{font-size:13px;color:var(--taupe);margin-bottom:28px}
 .pdp-order-note a{color:var(--gold-deep);font-weight:500;text-decoration:underline;text-underline-offset:3px}
-.pdp-trust{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line-soft);background:var(--cream)}
+.pdp-trust{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border:1px solid var(--line-soft);background:var(--cream)}
 .pdp-trust div{padding:16px 12px;text-align:center;border-left:1px solid var(--line-soft)}
 .pdp-trust div:first-child{border-left:0}
 .pdp-trust svg{width:20px;height:20px;stroke:var(--gold);margin:0 auto 8px}
@@ -1195,19 +1195,29 @@ h1 em,h2 em,h3 em,h4 em{font-style:italic;font-weight:400}
 .hs-scrim{display:none}
 .hero-copy{inset:auto 0 76px 0;max-width:none;align-items:center;text-align:center;padding:0 20px;justify-content:flex-end;pointer-events:none}
 .hero-copy .hero-cta{pointer-events:auto;justify-content:center}
+/* hero — desktop & medium: wide banner, shown at 16:9 */
+.hero{min-height:0;aspect-ratio:16/9}
 .hero-slide picture{display:block;width:100%;height:100%}
+.hs-bg{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:center;transform:none}
+.hs-scrim{display:none}
+.hero-copy{inset:auto 0 76px 0;max-width:none;align-items:center;text-align:center;padding:0 20px;justify-content:flex-end;pointer-events:none}
+.hero-copy .hero-cta{pointer-events:auto;justify-content:center}
+/* phones & small tablets — full-screen tall hero with portrait photos, buttons only */
 @media(max-width:980px){
-  /* phones / tablets — tall full-screen hero: portrait photo, centred headline, stacked buttons */
-  .hero{aspect-ratio:auto;padding-top:0;display:block;min-height:max(560px,calc(100svh - 112px));min-height:max(560px,calc(100vh - 112px))}
+  .hero{aspect-ratio:auto;padding-top:0;display:block;min-height:max(560px,calc(100vh - 112px))}
   @supports (height:100svh){.hero{min-height:max(560px,calc(100svh - 112px))}}
   .hero-slide{inset:0;height:auto}
   .hs-bg{object-position:center 35%}
-  .hs-scrim{display:block;background:linear-gradient(to top,rgba(12,9,9,.86),rgba(12,9,9,.4) 55%,rgba(12,9,9,.22))}
+  .hs-scrim{display:block;background:linear-gradient(to top,rgba(12,9,9,.55),transparent 38%)}
   .hs-dots{top:auto;bottom:22px}
-  /* no headline on small screens (the photo speaks) — buttons stay, placed like desktop */
-  .hs-scrim{background:linear-gradient(to top,rgba(12,9,9,.55),transparent 38%)}
   .hero-copy{display:flex;position:absolute;inset:auto 0 76px 0;z-index:6;pointer-events:none;max-width:none;
     padding:0 16px;align-items:center;text-align:center;justify-content:flex-end}
   .hero-copy .hero-cta{pointer-events:auto;flex-direction:row;flex-wrap:wrap;justify-content:center;align-items:center;width:auto;max-width:none;gap:12px}
   .hero-copy .btn{width:auto;padding-left:20px;padding-right:20px}
 }
+
+.acc-body-in.policy-copy h4{font:600 12px/1.4 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--cocoa);margin:18px 0 8px}
+.acc-body-in.policy-copy h4:first-child{margin-top:4px}
+.acc-body-in.policy-copy h5{font:600 13.5px/1.4 var(--sans);color:var(--cocoa);margin:14px 0 4px}
+.acc-body-in.policy-copy p{margin:0 0 8px;line-height:1.65}
+.acc-body-in p{line-height:1.65}

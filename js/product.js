@@ -2,7 +2,86 @@
    AMOUR JEWELS — Product detail page
    ============================================================ */
 
-const SHIP_COPY = 'Dispatched in 24–48 hrs from our atelier via Delhivery / BlueDart, fully insured. Metro delivery in 2–3 days, rest of India in 3–6 days. All orders are prepaid (UPI, cards, net-banking).';
+const LINK_STYLE = 'color:var(--gold-deep);text-decoration:underline;text-underline-offset:3px';
+const WA = '<a href="https://wa.me/919009055502" target="_blank" rel="noopener" style="' + LINK_STYLE + '">WhatsApp</a>';
+
+/* Same wording as the footer pages: shipping-policy.html & returns-exchange.html */
+const SHIPPING_POLICY_HTML = `
+<h4>Shipping Policy</h4>
+<p>At Amour Jewels, we take extra care to ensure your treasured pieces reach you safely and as promptly as possible.</p>
+<h5>Order Processing &amp; Dispatch</h5>
+<p>In-stock items are usually dispatched within <b>24–48 hours</b> of receiving your order.</p>
+<h5>Estimated Delivery Timelines</h5>
+<p>Once dispatched, the usual delivery time is <b>3–8 days</b>, depending on your delivery location and courier service.</p>
+<p>Need your order sooner? For urgent orders or express shipping options, please reach out to us on ${WA} before placing your order. Our team will be happy to assist you.</p>
+<h5>Custom Orders</h5>
+<p>Custom-made and specially requested pieces may require additional processing time.</p>
+<p>For an estimated dispatch and delivery timeline, please contact our team before placing your order. We will guide you based on the requirements of your piece.</p>
+<h5>Shipping Delays</h5>
+<p>While we strive to deliver every order within the estimated timeframe, delays may occasionally occur due to public holidays, adverse weather, natural calamities, courier disruptions or other circumstances beyond our control.</p>
+<p>We appreciate your patience and understanding in such situations.</p>
+<h5>Need Assistance?</h5>
+<p>For shipping updates, urgent delivery requests or any other shipping-related queries, please contact our team on ${WA}. We’re always happy to help make your Amour experience seamless.</p>
+<h4>International Shipping</h4>
+<p>Amour Jewels brings the beauty of Indian adornment to customers around the world. We offer international shipping, subject to service availability.</p>
+<h5>Delivery Timelines</h5>
+<p>International delivery timelines vary depending on the destination, customs clearance and courier services. For an estimated delivery timeframe, please contact our team before placing your order.</p>
+<h5>Customs Duties &amp; Import Taxes</h5>
+<p>International orders may be subject to customs duties, import taxes, VAT or other charges imposed by the destination country. These charges, where applicable, are the responsibility of the customer and are not included in the product price or shipping charges unless explicitly stated at checkout.</p>
+<h5>Customs Clearance &amp; Delays</h5>
+<p>International shipments may experience delays due to customs inspections, documentation requirements, public holidays, adverse weather or other circumstances beyond our control. Amour Jewels cannot guarantee delivery dates where such delays occur.</p>
+<h5>Need Assistance?</h5>
+<p>For international shipping enquiries, destination-specific delivery estimates or assistance with your order, please contact our team on ${WA}. We will be happy to help you discover and shop Amour from wherever you are in the world.</p>`;
+
+const RETURNS_POLICY_HTML = `
+<h4>Exchange / Return Policy</h4>
+<p>At Amour Jewels, every piece is carefully checked and packed before dispatch. We want you to love your purchase, and our team is here to help if something isn’t right.</p>
+<p>Please read our policy carefully before placing your order.</p>
+<h5>Damaged or Defective Products</h5>
+<p>If your jewellery arrives damaged or defective, please notify us within <b>48 hours</b> of receiving your order.</p>
+<p>To help us verify and resolve your claim, you must provide:</p>
+<ul><li>Clear photographs and videos of the damaged or defective item.</li>
+<li>Your order number and a brief description of the issue.</li>
+<li>Unboxing videos are mandatory for damage claims. Claims submitted without the required video evidence may not be eligible for approval.</li></ul>
+<p>Once our team reviews and approves the claim, we will guide you through the appropriate resolution.</p>
+<h5>Returns &amp; Refunds</h5>
+<p>For eligible returns approved by our team, the refund will be issued as <b>store credit only</b> — no refund to the original payment method.</p>
+<p>Store credit will be valid for <b>90 days</b> from the date of issue and must be used within this period. Any unused balance after expiry will no longer be redeemable.</p>
+<h5>Size Exchanges</h5>
+<p>If you need a different size for rings, bangles or other size-dependent jewellery, please contact our team within <b>48 hours</b> of receiving your order.</p>
+<ul><li>Size exchanges are subject to product availability and approval by our team.</li>
+<li>Additional shipping charges for the exchange will be borne by the customer.</li>
+<li>The item must be unused, unworn, undamaged and returned in its original packaging.</li>
+<li>Products showing signs of wear, alteration or damage may not be eligible for exchange.</li></ul>
+<h5>Conditions for Returns &amp; Exchanges</h5>
+<p>To be eligible for an approved return or exchange:</p>
+<ul><li>The request must be raised within the applicable 48-hour window.</li>
+<li>The jewellery must be unused, unworn and in its original condition.</li>
+<li>Original packaging and any accompanying items must be included.</li>
+<li>The request must be approved by our team before the item is shipped back.</li></ul>
+<h5>Important Note</h5>
+<p>We recommend recording an uninterrupted video while opening your parcel to help protect both you and Amour Jewels in the event of a transit-damage claim.</p>
+<p>Our team reviews every request individually and will communicate the outcome and available resolution.</p>
+<h5>Need assistance?</h5>
+<p>Message us on ${WA} with your order number — we will take it from there.</p>`;
+
+/* Manufacturer / consumer-care block shown on every product (values come from store-config.js) */
+function makerHTML() {
+  const S = (typeof STORE !== 'undefined') ? STORE : {};
+  const name = S.legalName || 'Amour Jewels Retail LLP';
+  const addr = S.address || 'India';
+  const mail = S.email || 'amourjewelsretail@gmail.com';
+  const tel = S.phone || '+91 9009055502';
+  const hrs = S.hours || 'Mon–Sat · 11 am – 8 pm IST';
+  const telHref = tel.replace(/[^\d+]/g, '');
+  return `<p><b>Manufactured, packed &amp; marketed by:</b><br>${name}, ${addr}</p>
+    <p><b>Country of origin:</b> India</p>
+    <p><b>Consumer care:</b><br>
+      Email: <a href="mailto:${mail}" style="${LINK_STYLE}">${mail}</a><br>
+      Phone: <a href="tel:${telHref}" style="${LINK_STYLE}">${tel}</a> (${hrs})<br>
+      ${WA}: <a href="https://wa.me/${telHref.replace('+','')}" target="_blank" rel="noopener" style="${LINK_STYLE}">${tel}</a></p>`;
+}
+
 
 let pdp = { size: null, qty: 1 };
 
@@ -63,10 +142,6 @@ function infoHTML(p) {
         <span>Insured, tracked shipping</span>
       </div>
       <div>
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M12 3l7 3v5c0 5-3 8.5-7 10-4-1.5-7-5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg>
-        <span>7-day easy exchange</span>
-      </div>
-      <div>
         <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><rect x="2" y="6" width="20" height="12" rx="1"/><path d="M2 10h20"/></svg>
         <span>Secure prepaid payments</span>
       </div>
@@ -88,7 +163,13 @@ function infoHTML(p) {
         <button class="acc-head">Shipping &amp; Returns
           <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
         </button>
-        <div class="acc-body"><div class="acc-body-in"><p>${SHIP_COPY} Exchange or store credit within 7 days of delivery — the piece must be unworn and in its box. Earrings are exchangeable only for manufacturing defects.</p></div></div>
+        <div class="acc-body"><div class="acc-body-in policy-copy">${SHIPPING_POLICY_HTML}${RETURNS_POLICY_HTML}</div></div>
+      </div>
+      <div class="acc">
+        <button class="acc-head">Manufacturer &amp; Consumer Care
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+        <div class="acc-body"><div class="acc-body-in">${makerHTML()}</div></div>
       </div>
     </div>
   </div>`;
