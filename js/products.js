@@ -15,11 +15,12 @@ const CATEGORIES = {
   brooches:  { label: 'Brooches & Kalangi', img: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=900&q=80' },
   rings:     { label: 'Rings', img: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=900&q=80' },
   pearls:    { label: 'Pearls', img: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=900&q=80' },
+  diamond:   { label: 'Diamond Jewellery', img: 'images/cat-diamond.jpg' },
   everyday:  { label: 'Everyday Gold', img: 'https://images.unsplash.com/photo-1610694955371-d4a3e0ce4b52?auto=format&fit=crop&w=900&q=80' }
 };
 
 /* Curated order for the Shop All dropdown — new labels first, no counts shown */
-const NAV_CATEGORIES = ['hand', 'necklaces', 'earrings', 'bracelets', 'hair', 'groom', 'brooches'];
+const NAV_CATEGORIES = ['hand', 'necklaces', 'earrings', 'bracelets', 'hair', 'groom', 'brooches', 'diamond'];
 
 const PRODUCTS = [
   {

@@ -26,6 +26,7 @@ const DEMO_CATEGORIES = [
   { id: 'pearls',    name: 'Pearls',             parent: '—', order: 9, status: 'Live',  h1: 'Pearl Jewellery', meta: 'Baroque pearl strands and pendants with old-world lustre.' },
   { id: 'everyday',  name: 'Everyday Gold',      parent: '—', order: 10, status: 'Live', h1: 'Everyday Gold', meta: 'Featherlight 18k vermeil pieces made for daily wear.' },
   { id: 'bridal',    name: 'The Bridal Edit',    parent: '—', order: 11, status: 'Live', h1: 'The Bridal Edit', meta: 'Complete bridal sets in antique gold and polki finish.' },
+  { id: 'diamond',   name: 'Diamond Jewellery',  parent: '—', order: 13, status: 'Live', h1: 'Diamond Jewellery', meta: 'Diamond jewellery — solitaires, studs and statement pieces for life\'s brightest moments.' },
   { id: 'gifting',   name: 'Gifting',            parent: '—', order: 12, status: 'Draft', h1: 'Gifting',    meta: 'Gift-ready pieces with keepsake packaging and a message card.' }
 ];
 

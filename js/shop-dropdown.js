@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let ddHideTimer = null;
   let ddActive = '';
   const catalog = (typeof getCatalog === 'function') ? getCatalog() : PRODUCTS;
-  const navKeys = ['hand', 'necklaces', 'earrings', 'bracelets', 'hair', 'groom', 'brooches'];
+  const navKeys = ['hand', 'necklaces', 'earrings', 'bracelets', 'hair', 'groom', 'brooches', 'diamond'];
   const list = [{ key: '', label: 'All Jewellery', img: 'images/all-jewellery.jpg' }];
   for (const catKey of navKeys) {
     if (!CATEGORIES[catKey]) continue;

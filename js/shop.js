@@ -62,7 +62,7 @@ function buildFilters() {
   const catalog = (typeof getCatalog === 'function') ? getCatalog() : PRODUCTS;
   catalog.forEach(p => (p.cat || []).forEach(c => counts[c] = (counts[c] || 0) + 1));
   /* visible categories — rings / pearls / everyday hidden from browsing but products stay live */
-  const VISIBLE_CATS = ['hand', 'necklaces', 'earrings', 'bracelets', 'hair', 'groom', 'brooches'];
+  const VISIBLE_CATS = ['hand', 'necklaces', 'earrings', 'bracelets', 'hair', 'groom', 'brooches', 'diamond'];
   if (catWrap) {
     catWrap.insertAdjacentHTML('beforeend',
       `<a href="shop.html" class="${!shopState.cat ? 'active' : ''}">All Jewellery <span class="n">${catalog.length}</span></a>` +
@@ -172,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Build the category chips â€” curated order, no piece counts.
   // Uses the live catalog (admin edits included) â€” same source as the grid.
   const liveCatalog = (typeof getCatalog === 'function') ? getCatalog() : PRODUCTS;
-  const navKeys = ['hand', 'necklaces', 'earrings', 'bracelets', 'hair', 'groom', 'brooches'];
+  const navKeys = ['hand', 'necklaces', 'earrings', 'bracelets', 'hair', 'groom', 'brooches', 'diamond'];
   const categoryList = [{ key: '', label: 'All Jewellery', img: 'images/all-jewellery.jpg' }];
   for (const catKey of navKeys) {
     if (!CATEGORIES[catKey]) continue;
